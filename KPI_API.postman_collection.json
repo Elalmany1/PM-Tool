@@ -1,0 +1,528 @@
+{
+  "info": {
+    "name": "Product Management KPI API",
+    "description": "Complete collection for all 25+ PM KPIs with examples",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health & Utility",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            }
+          }
+        },
+        {
+          "name": "List All Metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/metrics/list",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "list"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Financial Metrics",
+      "item": [
+        {
+          "name": "Calculate ARPU",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"total_revenue\": 50000.0,\n  \"total_users\": 1000,\n  \"time_frame\": \"monthly\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/arpu",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "arpu"]
+            }
+          }
+        },
+        {
+          "name": "Calculate MRR (Simple)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"arpu\": 50.0,\n  \"number_of_accounts\": 1000\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/mrr",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "mrr"]
+            }
+          }
+        },
+        {
+          "name": "Calculate MRR (Detailed)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"current_monthly_subscriptions\": 45000.0,\n  \"revenue_new_subscriptions\": 5000.0,\n  \"revenue_upgrades\": 2000.0,\n  \"revenue_downgrades\": 500.0,\n  \"revenue_lost_customers\": 1500.0\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/mrr",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "mrr"]
+            }
+          }
+        },
+        {
+          "name": "Calculate CLTV",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"average_customer_lifetime_months\": 24.0,\n  \"average_revenue_per_user\": 50.0\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/cltv",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "cltv"]
+            }
+          }
+        },
+        {
+          "name": "Calculate CAC",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"total_marketing_spending\": 10000.0,\n  \"total_sales_spending\": 5000.0,\n  \"number_of_new_customers\": 50\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/cac",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "cac"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer Loyalty Metrics",
+      "item": [
+        {
+          "name": "Calculate Retention Rate",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customers_at_start\": 1000,\n  \"customers_at_end\": 950,\n  \"new_customers_acquired\": 100\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/retention-rate",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "retention-rate"]
+            }
+          }
+        },
+        {
+          "name": "Calculate Churn Rate",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customers_lost\": 50,\n  \"total_customers_at_start\": 1000,\n  \"revenue_from_lost_customers\": 2500.0,\n  \"total_revenue_at_start\": 50000.0\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/churn-rate",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "churn-rate"]
+            }
+          }
+        },
+        {
+          "name": "Calculate NRR",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mrr_at_beginning\": 50000.0,\n  \"expansion_revenue\": 5000.0,\n  \"contraction_revenue\": 1000.0,\n  \"churned_revenue\": 2000.0\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/nrr",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "nrr"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "User Engagement Metrics",
+      "item": [
+        {
+          "name": "Calculate Conversion Rate",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number_of_conversions\": 250,\n  \"total_visitors_or_users\": 10000,\n  \"conversion_type\": \"signup\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/conversion-rate",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "conversion-rate"]
+            }
+          }
+        },
+        {
+          "name": "Calculate Traffic",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"organic_traffic\": 5000,\n  \"paid_traffic\": 3000,\n  \"time_frame\": \"monthly\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/traffic",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "traffic"]
+            }
+          }
+        },
+        {
+          "name": "Calculate DAU/MAU",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"daily_active_users\": 5000,\n  \"monthly_active_users\": 15000,\n  \"measurement_date\": \"2024-02-01\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/dau-mau",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "dau-mau"]
+            }
+          }
+        },
+        {
+          "name": "Calculate Session Duration",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"total_session_duration_seconds\": 360000.0,\n  \"total_number_of_sessions\": 10000\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/session-duration",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "session-duration"]
+            }
+          }
+        },
+        {
+          "name": "Calculate Bounce Rate",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number_of_non_engaged_sessions\": 4500,\n  \"total_number_of_sessions\": 10000\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/bounce-rate",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "bounce-rate"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Product/Feature Metrics",
+      "item": [
+        {
+          "name": "Calculate Sessions Per User",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"total_number_of_sessions\": 14000,\n  \"number_of_users\": 10000\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/sessions-per-user",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "sessions-per-user"]
+            }
+          }
+        },
+        {
+          "name": "Calculate User Actions",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"total_actions\": 50000,\n  \"total_sessions\": 10000,\n  \"action_types\": {\n    \"clicks\": 30000,\n    \"scrolls\": 15000,\n    \"form_fills\": 5000\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/user-actions",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "user-actions"]
+            }
+          }
+        },
+        {
+          "name": "Calculate Feature Adoption",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"users_using_feature\": 600,\n  \"total_active_users\": 1000,\n  \"feature_name\": \"Advanced Reporting\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/feature-adoption",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "feature-adoption"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "User Satisfaction Metrics",
+      "item": [
+        {
+          "name": "Calculate NPS",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"promoters\": 500,\n  \"passives\": 300,\n  \"detractors\": 200\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/nps",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "nps"]
+            }
+          }
+        },
+        {
+          "name": "Calculate EGR",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mrr_at_beginning\": 100000.0,\n  \"expansion_revenue\": 10000.0,\n  \"upsell_revenue\": 5000.0,\n  \"churn_revenue\": 8000.0,\n  \"contraction_revenue\": 2000.0,\n  \"new_customer_revenue_from_referrals\": 15000.0,\n  \"total_new_customer_revenue\": 50000.0\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/egr",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "egr"]
+            }
+          }
+        },
+        {
+          "name": "Calculate CSAT",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number_of_satisfied_responses\": 750,\n  \"total_number_of_responses\": 1000,\n  \"scale_type\": \"5-point\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/csat",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "csat"]
+            }
+          }
+        },
+        {
+          "name": "Calculate OSAT",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number_of_satisfied_responses\": 800,\n  \"total_number_of_responses\": 1000,\n  \"scale_type\": \"5-point\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/osat",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "osat"]
+            }
+          }
+        },
+        {
+          "name": "Calculate CES",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sum_of_all_effort_scores\": 2500.0,\n  \"total_number_of_respondents\": 1000,\n  \"scale_max\": 7\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/ces",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "ces"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Additional PM Metrics",
+      "item": [
+        {
+          "name": "Calculate Activation Rate",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activated_users\": 850,\n  \"total_signups\": 1000,\n  \"activation_criteria\": \"Completed onboarding + first action\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/activation-rate",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "activation-rate"]
+            }
+          }
+        },
+        {
+          "name": "Calculate Time to Value",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"total_time_to_value_hours\": 2400.0,\n  \"number_of_users\": 800\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/time-to-value",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "time-to-value"]
+            }
+          }
+        },
+        {
+          "name": "Calculate Product Quality",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number_of_defects\": 25,\n  \"total_features_or_releases\": 100\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/product-quality",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "product-quality"]
+            }
+          }
+        },
+        {
+          "name": "Calculate Velocity",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"story_points_completed\": 85,\n  \"sprint_length_days\": 14,\n  \"team_size\": 8\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/metrics/velocity",
+              "host": ["{{base_url}}"],
+              "path": ["metrics", "velocity"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "ML Predictions",
+      "item": [
+        {
+          "name": "Predict Churn Rate",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"metric_name\": \"churn_rate\",\n  \"historical_values\": [5.0, 4.8, 4.5, 4.3, 4.0, 3.8, 3.5],\n  \"periods_ahead\": 3\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/predict/metric",
+              "host": ["{{base_url}}"],
+              "path": ["predict", "metric"]
+            }
+          }
+        },
+        {
+          "name": "Predict MRR",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"metric_name\": \"mrr\",\n  \"historical_values\": [45000, 48000, 51000, 54000, 57000, 60000],\n  \"periods_ahead\": 3\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/predict/metric",
+              "host": ["{{base_url}}"],
+              "path": ["predict", "metric"]
+            }
+          }
+        },
+        {
+          "name": "Analyze Pattern",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"metric_name\": \"churn_rate\",\n  \"historical_values\": [5.0, 4.8, 4.5, 4.3, 4.0, 3.8, 3.5]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/analyze/pattern",
+              "host": ["{{base_url}}"],
+              "path": ["analyze", "pattern"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
